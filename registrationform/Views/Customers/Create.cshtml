@@ -1,0 +1,48 @@
+﻿@model List<ApplicationUser>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Report</title>
+    <style>
+        /* CSS styles for your report */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Customer Report</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Created At</th>
+        </tr>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td>@customer.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+            </tr>
+        }
+
+
+    </table>
+
+    <a href="@Url.Action("GenerateReport", "Customers")">Generate PDF Report</a>
+
+</body>
+</html>
